@@ -22,6 +22,9 @@
     # pkgs.openssh_gssapi
     # pkgs.busybox
     # pkgs.speech-tools
+    pkgs.python310
+    pkgs.python310Packages.pip
+    pkgs.nox
   ];
 
   # Sets environment variables in the workspace
