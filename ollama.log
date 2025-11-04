@@ -1,0 +1,8 @@
+Couldn't find '/home/user/.ollama/id_ed25519'. Generating new private key.
+Your new public key is:
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHxSpCyAJ8k3E1qFuWoEnTW6JIg6aA+s5z/wlTozlIv7
+
+time=2025-11-04T16:12:46.265Z level=INFO source=images.go:710 msg="total blobs: 0"
+time=2025-11-04T16:12:46.266Z level=INFO source=images.go:717 msg="total unused blobs removed: 0"
+Error: stat /tmp/nix-shell-8862-0: no such file or directory
