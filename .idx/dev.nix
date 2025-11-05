@@ -8,20 +8,20 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.gcc
-    # pkgs.go
-    # pkgs.python311
-    # pkgs.python311Packages.pip
-    # pkgs.nodejs_20
-    # pkgs.nodePackages.nodemon
-    # pkgs.sudo
-    # pkgs.sudo-rs
-    # pkgs.doas-sudo-shim
-    # pkgs.python312Packages.pip
+    pkgs.go
+    pkgs.python311
+    pkgs.python311Packages.pip
+    pkgs.nodejs_20
+    pkgs.nodePackages.nodemon
+    pkgs.sudo
+    pkgs.sudo-rs
+    pkgs.doas-sudo-shim
+    pkgs.python312Packages.pip
     pkgs.openssh
-    # pkgs.openshh_hpn
-    # pkgs.openssh_gssapi
-    # pkgs.busybox
-    # pkgs.speech-tools
+    pkgs.openshh_hpn
+    pkgs.openssh_gssapi
+    pkgs.busybox
+    pkgs.speech-tools
     pkgs.python310
     pkgs.python310Packages.pip
     pkgs.nox
