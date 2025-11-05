@@ -18,7 +18,7 @@
     pkgs.doas-sudo-shim
     pkgs.python312Packages.pip
     pkgs.openssh
-    pkgs.openshh_hpn
+    pkgs.openssh_hpn
     pkgs.openssh_gssapi
     pkgs.busybox
     pkgs.speech-tools
