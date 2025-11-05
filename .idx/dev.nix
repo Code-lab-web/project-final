@@ -26,6 +26,7 @@
     pkgs.python310Packages.pip
     pkgs.nox
     pkgs.ollama
+    pkgs.pre-commit
   ];
 
   # Sets environment variables in the workspace
