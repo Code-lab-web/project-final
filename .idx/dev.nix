@@ -25,6 +25,7 @@
     pkgs.python310
     pkgs.python310Packages.pip
     pkgs.nox
+    pkgs.ollama
   ];
 
   # Sets environment variables in the workspace
