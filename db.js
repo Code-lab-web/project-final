@@ -1,45 +1,39 @@
-var sqlite3 = require('sqlite3');
-var mkdirp = require('mkdirp');
-var crypto = require('crypto');
 
-mkdirp.sync('var/db');
+const { MongoClient } = require('mongodb');
 
-var db = new sqlite3.Database('var/db/todos.db');
+// TODO: Replace the following with your Atlas connection string
+const url = "mongodb+srv://<username>:<password>@cluster0.xxxxxxxx.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(url);
 
-db.serialize(function() {
-  // create the database schema for the todos app
-  db.run("CREATE TABLE IF NOT EXISTS users ( \
-    id INTEGER PRIMARY KEY, \
-    username TEXT UNIQUE, \
-    hashed_password BLOB, \
-    salt BLOB, \
-    name TEXT, \
-    email TEXT UNIQUE, \
-    email_verified INTEGER \
-  )");
-  
-  db.run("CREATE TABLE IF NOT EXISTS federated_credentials ( \
-    id INTEGER PRIMARY KEY, \
-    user_id INTEGER NOT NULL, \
-    provider TEXT NOT NULL, \
-    subject TEXT NOT NULL, \
-    UNIQUE (provider, subject) \
-  )");
-  
-  db.run("CREATE TABLE IF NOT EXISTS todos ( \
-    id INTEGER PRIMARY KEY, \
-    owner_id INTEGER NOT NULL, \
-    title TEXT NOT NULL, \
-    completed INTEGER \
-  )");
-  
-  // create an initial user (username: alice, password: letmein)
-  var salt = crypto.randomBytes(16);
-  db.run('INSERT OR IGNORE INTO users (username, hashed_password, salt) VALUES (?, ?, ?)', [
-    'alice',
-    crypto.pbkdf2Sync('letmein', salt, 310000, 32, 'sha256'),
-    salt
-  ]);
-});
+// The database to use
+const dbName = "todos";
 
-module.exports = db;
+async function run() {
+  try {
+    // Connect to the Atlas cluster
+    await client.connect();
+    const db = client.db(dbName);
+
+    // Make the appropriate DB calls
+    // You can use the `db` object to interact with your database.
+    // For example, you can create a collection and insert a document like this:
+    /*
+    const col = db.collection("todos");
+    let todoDocument = {
+        "title": "Finish MongoDB tutorial",
+        "completed": false
+    }
+    const p = await col.insertOne(todoDocument);
+    */
+
+  } catch (err) {
+    console.log(err.stack);
+  }
+  finally {
+    await client.close();
+  }
+}
+
+run().catch(console.dir);
+
+module.exports = client;
