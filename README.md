@@ -34,6 +34,7 @@ New React Hook
 Authentication
 Navigation using React Router
 Global state management using context API Zustand
+Python 3.15
 
 CSS
 Tailwind, Mui@materials
