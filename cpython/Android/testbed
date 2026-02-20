@@ -1,0 +1,56 @@
+# Google Play Deployment Checklist for CPython on Android
+
+This file provides a checklist and notes for preparing and deploying your CPython-based Android application to the Google Play Store.
+
+## 1. Prepare Your App for Release
+
+- [ ] **Disable Debugging:** Ensure that debugging is disabled in your app'''s configuration.
+- [ ] **Clean Your Code:** Remove any unnecessary logs, comments, and debug code.
+- [ ] **Update App Version:** Increment the `versionCode` and `versionName` in your `build.gradle` file.
+
+## 2. Sign Your Application
+
+You must sign your application with a release key before you can upload it to the Google Play Store.
+
+- [ ] **Generate a Release Key:** Use the `keytool` command to generate a private key.
+  ```bash
+  keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+  ```
+- [ ] **Store the Keystore Securely:** Keep your keystore file in a safe and secure location. You will need it to update your app.
+- [ ] **Configure Gradle for Signing:** Add signing configurations to your `build.gradle` file to use the release key when building your app.
+
+## 3. Build a Release-Ready Android App Bundle (AAB)
+
+The Android App Bundle (AAB) is the recommended format for publishing apps on Google Play.
+
+- [ ] **Build the AAB:** Use the following Gradle command to build the AAB:
+  ```bash
+  ./gradlew bundleRelease
+  ```
+- [ ] **Locate the AAB:** The generated AAB will be located in `app/build/outputs/bundle/release/`.
+
+## 4. Test Your Release Build
+
+- [ ] **Install and Test the AAB:** Before uploading to Google Play, thoroughly test the release version of your app on various devices.
+
+## 5. Prepare Your Google Play Store Listing
+
+- [ ] **High-Resolution App Icon:** Create a high-resolution app icon (512x512).
+- [ ] **Feature Graphic:** Create a feature graphic (1024x500).
+- [ ] **Screenshots:** Take screenshots of your app for phones, tablets (7-inch and 10-inch).
+- [ ] **App Title and Description:** Write a compelling title and description for your app.
+- [ ] **Privacy Policy:** Create and host a privacy policy for your app.
+- [ ] **Categorization and Content Rating:** Choose the appropriate category for your app and complete the content rating questionnaire.
+
+## 6. Upload to Google Play Console
+
+- [ ] **Create a New App:** In the Google Play Console, create a new app.
+- [ ] **Complete Store Listing:** Fill in all the required information in the store listing section.
+- [ ] **Upload Your AAB:** Go to the "App releases" section and upload your AAB file.
+- [ ] **Rollout the Release:** Review and roll out your release to production.
+
+## CPython on Android Specific Considerations
+
+- [ ] **ABI Splits:** If your app includes native CPython libraries, ensure that your build is configured to generate APKs for different ABIs (ARM, ARM64, x86, x86_64) if you are not using AAB. AAB handles this automatically.
+- [ ] **License Compliance:** Ensure that you are compliant with the licenses of CPython and any other third-party libraries you are using. Include the necessary license information in your app.
+- [ ] **Performance Testing:** Pay close attention to the performance of your app, especially the startup time and memory usage, as running a Python interpreter on Android can be resource-intensive.
