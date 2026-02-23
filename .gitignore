@@ -27,3 +27,7 @@ npm-debug.log*
 # Mac OS X
 .DS_Store
 >>>>>>> cb8c9927541c8285a805a353176c721213a896a9
+
+# Database
+*.db
+sessions.db
